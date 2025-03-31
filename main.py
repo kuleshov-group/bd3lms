@@ -139,9 +139,9 @@ def _ppl_eval(config, logger, tokenizer):
   _, valid_ds = dataloader.get_dataloaders(
     config, tokenizer, skip_train=True, valid_seed=seed)
   trainer.validate(model, valid_ds)
-  
+
 def _train(config, logger, tokenizer):
-  logger.info('Startinfg Training.')
+  logger.info('Starting Training.')
   wandb_logger = None
   if config.get('wandb', None) is not None:
     wandb_logger = L.pytorch.loggers.WandbLogger(

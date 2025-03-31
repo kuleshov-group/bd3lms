@@ -685,7 +685,8 @@ class Diffusion(L.LightningModule):
             num_steps=num_steps,
             seqlen=seqlen,
             eps=eps)
-          if num_tries > 10:
+          num_tries += 1
+          if num_tries > 10 and sample_i is None:
             raise ValueError('Sampling failed.')
         samples.append(sample_i)
         self.metrics.nfes.update(nfes)
